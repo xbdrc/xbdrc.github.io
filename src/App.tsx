@@ -17,7 +17,7 @@ import { FaPlay, FaPause, FaArrowUp } from "react-icons/fa";
 function App() {
 
   const [showCursor, setShowCursor] = useState(false)
-  const playerRef = useRef(null);
+  const playerRef = useRef<SoundCloudWidget | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
@@ -47,6 +47,8 @@ function App() {
   useEffect(() => {
     const container = document.querySelector(".container");
 
+    if (!container) return;
+
     const handleScroll = () => {
       setShowTop(container.scrollTop > 50);
     };
@@ -58,7 +60,7 @@ function App() {
     };
   }, []);
 
-  const [playerReady, setPlayerReady] = useState(false);
+  // const [playerReady, setPlayerReady] = useState(false);
 
   useEffect(() => {
     const iframe = document.getElementById("soundcloud-player");
@@ -71,7 +73,7 @@ function App() {
 
     widget.bind(window.SC.Widget.Events.READY, () => {
       console.log("SoundCloud player ready");
-      setPlayerReady(true);
+      // setPlayerReady(true);
     });
 
     widget.bind(window.SC.Widget.Events.PLAY, () => {
@@ -117,7 +119,7 @@ function App() {
           <button
             title="Top"
             onClick={() => {
-              document.querySelector(".container").scrollTo({
+              document.querySelector(".container")?.scrollTo({
                 top: 0,
                 behavior: "smooth",
               });
