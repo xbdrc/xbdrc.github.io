@@ -1,0 +1,16 @@
+.img {
+    border: 1px solid white;
+    border-radius: 10px;
+    object-fit: contain;
+    transition: all .2s;
+    opacity: .6;
+}
+
+.img:hover {
+    opacity: 1;
+}
+
+.image {
+    display: none;
+}
+

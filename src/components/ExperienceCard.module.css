@@ -1,0 +1,77 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    background-color: rgba(128, 128, 128, 0.603);
+    border-radius: 12px;
+    transition: all .2s;
+    width: 100%;
+    user-select: none;
+}
+
+.container:hover {
+    opacity: .8;
+}
+
+.container text {
+    font-weight: 200;
+    text-align: center;
+}
+
+.container div {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.container span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+}
+
+.container span svg {
+    width: 24px;
+    height: 24px;
+}
+
+.experience {
+    display: grid;
+    text-align: center;
+}
+
+@media screen and (max-width: 1200px) {
+    .experience {
+        flex-direction: column;
+    }
+
+    .container,
+    .container span {
+        font-size: 16px;
+    }
+
+    .container span svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .experience {
+        flex-direction: column;
+    }
+
+    .container,
+    .container span {
+        font-size: 14px;
+    }
+
+    .container span svg {
+        width: 18px;
+        height: 18px;
+    }
+}

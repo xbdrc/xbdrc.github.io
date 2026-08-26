@@ -1,0 +1,30 @@
+MongoDB Commands Sheet
+
+Installation
+=================
+https://www.mongodb.com/docs/manual/installation/
+- Select Platform Tutorial (Windows Community Edition)
+- Follow Procedure Steps
+- Also download (https://www.mongodb.com/try/download/shell) and install mongosh
+- If using VSCode, install "MongoDB for VS Code extension" to use mongosh directly IDE
+
+
+Commands
+=================
+show dbs							Show created databases
+use [db_name]							Connect to specified database (Also used to Create databases. Run with new db_name and create a collection to save db)
+db.createCollection("[name]")					Create collection in current database
+db.dropDatabase()						Drop current connected database
+db.[collection].insertOne( { [data] } )				Insert single document into the specified collection
+db.[collection].insertMany([ { [data] } ])			Insert multiple documents into the specified collection
+db.[collection].find()						Retrieve documents in collection
+db.[collection].find().sort({[field]: [num]})			Retrieve documents in collection, sorted by field (num 1 for ASC, num -1 for DSC)
+db.[collection].find().limit([num])				Retrieve documents in collection limited to the given number
+Its also possible to mix both sort() and limit() methods: db.[collection].find().sort({[field]: [num]}).limit([num])
+db.[collection].find({[field]: [value]})			Retrieve documents in collection where given field is equal to given value
+db.[collection].find({[field]: [value]}, {[field]: true})	Same as command above, but here we given just want to retrieve specified fields from that query
+
+
+
+Info on datatypes: https://www.mongodb.com/docs/mongodb-shell/reference/data-types/
+

@@ -1,0 +1,47 @@
+PSQL Shell 17.5 for Windows 64bit
+
+Pass: admin
+
+
+\?				Help
+\l				List all databases
+CREATE DATABASE [dbname];	Create database
+\c [dbname]			Connect to database
+DROP DATABASE [dbname];		Drop database
+\d				Check database tables
+\d [tablename]			Check specific table
+\i [path]			Execute .sql file https://youtu.be/qw--VYLpxG4?si=LZrlSIIMi9Pjo-nY&t=4059
+
+CREATE TABLE LINES
+======================
+CREATE TABLE "[tablename]" ( 					[CLICKENTER]
+id BIGSERIAL NOT NULL PRIMARY KEY,				[CLICKENTER] (from here down is the table fields, this example is for a USER table)
+email TEXT NOT NULL UNIQUE,					[CLICKENTER]
+username VARCHAR(50) NOT NULL UNIQUE,				[CLICKENTER]
+password TEXT );						[CLICKENTER]
+
+INSERT LINES 
+======================		
+INSERT INTO "user" (email, username, password)			[CLICKENTER]
+VALUES ('xbrunocruzx@outlook.pt', 'xbrunocruzx', '12345');	[CLICKENTER]
+
+SELECT LINES
+======================
+SELECT * FROM "user";
+
+
+
+
+
+
+https://www.mockaroo.com/ - To create mockup data
+Check PostgreSQL docs datatype website for info
+
+
+RUN ON DOCKER
+======================
+- Enable docker terminal
+- docker pull postgres
+- docker run --name [container name, ex: postgres-db] -e POSTGRES_PASSWORD=admin -p 5432:5432 -d postgres
+- docker exec -it postgres-db pqsql -U postgres (Postgres should be Up and Running)
+- To use the Postgres Admin Dashboard, go to Extensions, install "Open Source Management Tool for PostgreSQL"

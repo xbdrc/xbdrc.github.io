@@ -1,0 +1,23 @@
+Git Commands Sheet
+
+Download: http://git-scm.com
+More details: https://education.github.com/git-cheat-sheet-education.pdf
+
+SETUP & INIT
+git init                            Initialize repository in current directory
+git clone [url]                     Clone the specified repository
+
+STAGE & SNAPSHOT
+git status                          Show modified files in working directory
+git add [name] (* for all files)    Add file(s) to next commit (stage)
+git reset [file]                    Unstage file while retaining the changes in working directory
+git diff                            Diff of what is changed but not staged
+git diff --staged                   Diff of what is staged but not yet commited
+git commit -m "[commit message]"    Commit staged content as a new commit snapshot
+
+BRANCH & MERGE
+git branch                          List branches (* will appear next to active branch)
+git branch [branch name]            Create a new branch at the current commit
+git checkout                        Switch to another branch and check it out into working directory
+git merge [branch name]             Merge to specified branch's history into current one
+git log                             Show all commits in current branch's history

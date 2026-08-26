@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgba(255, 255, 255, 0.527);
+    border-radius: 12px;
+    background-color: black;
+    user-select: none;
+}
+
+.info {
+    border-top: 2px solid rgba(255, 255, 255, 0.527);
+    padding: 10px;
+}
+
+.title {
+    font-size: 20px;
+}
+
+.technologies {
+    opacity: .6;
+    margin-right: 8px;
+    display: flex;
+    gap: 10px;
+}
+
+/* style={{ display: "grid", gridTemplateColumns: "repeat(3, .25fr)" }} */
+
+.technologies span {
+    font-size: 14px;
+}
+
+.container a {
+    display: flex;
+    align-items: center;
+}
+
+.container  a:hover {
+    opacity: .6;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.image {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    opacity: .7;
+    transition: all .2s;
+    height: 180px;
+    object-fit: cover;
+}
+
+.container:hover .image {
+    opacity: 1;
+}
+
+.urls {
+    padding: 4px;
+    display: flex;
+    gap: 14px;
+}
