@@ -37,9 +37,9 @@ export default function Home() {
 
             <SEO
                 title="Bruno Cruz"
-                description="Professional web developer specialized in modern websites and UI."
+                description="Web developer"
                 image="/portfolio2.png"
-                url="https://xbdrcx.github.io/"
+                url="https://xbdrc.github.io/"
             />
             <div className="document" ref={docRef}>
                 <Section name="Home" showName={false}>
@@ -49,8 +49,8 @@ export default function Home() {
                         roles={["Web Developer"]}
                         image="20480310_grainy.png"
                         location="Lisbon, Portugal, Earth 🌍"
-                        github="xbdrcx"
-                        linkedin="xbrunocruzx"
+                        github="xbdrc"
+                        linkedin="xbdrc"
                         spotify="https://open.spotify.com/user/1192659842?si=98a1feeb38024d39"
                         discord="https://discord.com/users/231768776490614784"
                         email="contact.brunocruz@gmail.com"
@@ -62,7 +62,7 @@ export default function Home() {
                         <a onClick={() => scrollToSection("certificates")} href="#">Certificates</a>
                         <a onClick={() => scrollToSection("projects")} href="#">Projects</a>
                         <a onClick={() => scrollToSection("snippets")} href="#">Snippets</a>
-                        <a target="_blank" href="http://localhost:5173/brunocruz_resume.pdf"><FaLink size={14} />&nbsp;&nbsp;Resume</a>
+                        <a target="_blank" href="https://xbdrc.github.io/brunocruz_resume.pdf"><FaLink size={14} />&nbsp;&nbsp;Resume</a>
                     </div>
                     <SoundCloudPlayer playlist="https://api.soundcloud.com/playlists/2282476155" />
                 </Section>
