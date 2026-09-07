@@ -25,3 +25,6 @@ dist-ssr
 
 # Custom
 .env
+
+# OTHERS
+TODO.txt
