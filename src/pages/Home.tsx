@@ -166,7 +166,7 @@ export default function Home() {
                             title="ITJobs Analysis"
                             image="./projects/itjobsanalysis.png"
                             technologies={["Python", "Streamlit"]}
-                            repo="https://github.com/xbdrc/itjobs-analysis"
+                            repo="https://github.com/xbdrc/itjobs-analyzer"
                             live="https://itjobs.streamlit.app"
                         />
                         <ProjectCard
