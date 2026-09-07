@@ -130,6 +130,8 @@ export default function Home() {
                         <IconCard title="Docker" image="./icons/docker.png" />
                         <IconCard title="Postman" image="./icons/postman.png" />
                         <IconCard title="VS Code" image="./icons/vscode.png" />
+                        <IconCard title="Claude" image="./icons/claude.png" />
+                        <IconCard title="GitHub Copilot" image="./icons/ghcopilot.png" />
                     </div>
                 </Section>
                 <Section
