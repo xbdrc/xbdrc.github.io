@@ -58,3 +58,30 @@
     display: flex;
     gap: 14px;
 }
+
+@media screen and (max-width: 768px) {
+    .image {
+        height: 140px; /* was 180px */
+    }
+
+    .title {
+        font-size: 17px; /* was 20px */
+    }
+
+    .technologies span {
+        font-size: 12px; /* was 14px */
+    }
+
+    .info {
+        padding: 8px; /* was 10px */
+    }
+
+    .urls {
+        gap: 10px; /* was 14px */
+        padding: 3px; /* was 4px */
+    }
+
+    .technologies {
+        gap: 8px; /* was 10px */
+    }
+}

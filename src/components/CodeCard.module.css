@@ -126,3 +126,18 @@ hr {
         width: auto;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .container {
+        width: 30%;
+    }
+    .topBar {
+        /* display: flex; */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .title {
+        width: auto;
+    }
+}
