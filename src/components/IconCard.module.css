@@ -29,7 +29,7 @@
     height: 48px;
     object-fit: contain;
     transition: transform .4s, opacity .2s, filter .2s;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.8);
+    /* box-shadow: 0 8px 18px rgba(0, 0, 0, 0.8); */
     border-radius: 6px;
     /* Avoid Drag */
     user-drag: none;
