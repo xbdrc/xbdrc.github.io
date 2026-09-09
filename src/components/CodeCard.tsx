@@ -91,12 +91,14 @@ export default function CodeCard({ file, title = "Code Snippet", clipboard = tru
                 <label className={styles.title}>{title}</label>
                 <div className={styles.right}>
                     <label>{language.icon} {language.name + " (." + extension + ")"}</label>
-                    {clipboard && <button className={styles.barButton} title="Copy to clipboard" onClick={() => copyToClipboard(content)}><FaCopy size={16} /></button>}
-                    {download && <button className={styles.barButton} title="Download file" onClick={downloadSnippet}><FaFileDownload size={16} /></button>}
-                    {size && <>
-                        <button className={styles.barButton} title="Increase text size" onClick={() => changeFontSize(1)}><TbTextIncrease size={16} /></button>
-                        <button className={styles.barButton} title="Decrease text size" onClick={() => changeFontSize(-1)}><TbTextDecrease size={16} /></button>
-                    </>}
+                    <div className={styles.codeButtons}>
+                        {clipboard && <button className={styles.barButton} title="Copy to clipboard" onClick={() => copyToClipboard(content)}><FaCopy size={16} /></button>}
+                        {download && <button className={styles.barButton} title="Download file" onClick={downloadSnippet}><FaFileDownload size={16} /></button>}
+                        {size && <>
+                            <button className={styles.barButton} title="Increase text size" onClick={() => changeFontSize(1)}><TbTextIncrease size={16} /></button>
+                            <button className={styles.barButton} title="Decrease text size" onClick={() => changeFontSize(-1)}><TbTextDecrease size={16} /></button>
+                        </>}
+                    </div>
                 </div>
             </div>
             <hr />

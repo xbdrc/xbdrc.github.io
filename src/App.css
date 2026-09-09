@@ -100,7 +100,7 @@ input[type="email"] {
 
 .technologies {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 120px);
+  grid-template-columns: repeat(4, 120px);
   justify-content: center; /* centers the whole set of cards in the row */
   gap: 20px;
   padding: 20px;

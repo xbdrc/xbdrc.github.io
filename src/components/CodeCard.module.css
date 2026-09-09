@@ -36,6 +36,11 @@
     gap: 12px;
 }
 
+.codeButtons {
+    display: flex;
+    gap: 12px;
+}
+
 .barButton {
     transition: all 0.2s ease;
     display: flex;
@@ -136,8 +141,12 @@ hr {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        font-size: 12px;
     }
     .title {
         width: auto;
+    }
+    .right {
+        flex-direction: column;
     }
 }
