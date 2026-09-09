@@ -70,7 +70,7 @@ export default function Home() {
                     name="About"
                     description=""
                 >
-                    <p style={{ textAlign: "center", fontWeight: 200 }}>
+                    <p className="aboutDescription">
                         Full-Stack Developer with experience building and maintaining web applications, APIs, and database-driven solutions. Strong foundation in web development using <b>HTML</b>, <b>CSS</b>, <b>React</b>, and <b>Node.js</b>, with experience in <b>Python</b>, <b>SQL</b>, and <b>Git</b>. Familiar with <b>Docker</b> and <b>AI</b>. Motivated and solution-oriented, with a focus on building reliable software and contributing to challenging projects.
                     </p>
                 </Section>

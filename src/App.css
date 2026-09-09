@@ -141,6 +141,15 @@ input[type="email"] {
   animation: fadeIn 1s ease forwards;
 }
 
+.aboutDescription {
+  text-align: center;
+  font-weight: 200;
+  width: 100%;
+  min-width: 180px; /* tune this - wider than .description's 480px since it's body text, not a subtitle */
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 /* SCROLLBAR */
 ::-webkit-scrollbar {
   width: 4px;
@@ -180,6 +189,7 @@ input[type="email"] {
 
   .technologies {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    min-width: 180px;
   }
 }
 
