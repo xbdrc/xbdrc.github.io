@@ -67,3 +67,39 @@
         box-shadow: 0 0 5px 0px #ffffff;
     }
 }
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 20px; /* was 38px */
+    }
+
+    .image {
+        width: 160px; /* was 256px */
+        border-width: 4px; /* was 6px */
+        margin-bottom: 18px; /* was 28px */
+    }
+
+    .name {
+        font-size: 20px; /* was 24px */
+        margin-bottom: 6px;
+    }
+
+    .location {
+        font-size: 14px;
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+
+    .roles {
+        font-size: 15px; /* was 18px */
+        margin-bottom: 14px;
+    }
+
+    .socials {
+        gap: 12px; /* was 18px */
+    }
+
+    .socials a {
+        font-size: 24px; /* was 32px */
+    }
+}

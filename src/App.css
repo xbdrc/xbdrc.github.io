@@ -192,6 +192,9 @@ input[type="email"] {
 }
 
 @media screen and (max-width: 840px) {
+  .urls {
+    font-size: 14px;
+  }
   .technologies {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
