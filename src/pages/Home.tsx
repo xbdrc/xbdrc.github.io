@@ -163,8 +163,8 @@ export default function Home() {
                             repo="https://github.com/xbdrc/sentiment-api"
                         />
                         <ProjectCard
-                            title="ITJobs Analysis"
-                            image="./projects/itjobsanalysis.png"
+                            title="ITJobs Analyzer"
+                            image="./projects/itjobsanalyzer.png"
                             technologies={["Python", "Streamlit"]}
                             repo="https://github.com/xbdrc/itjobs-analyzer"
                             live="https://itjobs.streamlit.app"
