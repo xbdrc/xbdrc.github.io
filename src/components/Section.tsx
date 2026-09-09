@@ -34,7 +34,7 @@ export default function Section({ name, showName = true, description, children, 
             viewport={viewport}
         >
             {showName && <h1 className={styles.title}>{name}</h1>}
-            <text style={{ fontStyle: "italic" }} className={styles.description}>{description}</text>
+            <p style={{ fontStyle: "italic" }} className={styles.description}>{description}</p>
             {children}
         </motion.section>
     )

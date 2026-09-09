@@ -126,7 +126,7 @@ export default function Home() {
                         <IconCard title="Python" image="./icons/python.png" />
                         <IconCard title="Git" image="./icons/git.png" />
                         <IconCard title="npm" image="./icons/npm.png" />
-                        <IconCard title="HuggingFace" image="./icons/huggingface.png" />
+                        <IconCard title="Hugging Face" image="./icons/huggingface.png" />
                         <IconCard title="Docker" image="./icons/docker.png" />
                         <IconCard title="Postman" image="./icons/postman.png" />
                         <IconCard title="VS Code" image="./icons/vscode.png" />
