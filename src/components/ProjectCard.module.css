@@ -16,7 +16,7 @@
     font-size: 20px;
 }
 
-.technologies {
+.tags {
     opacity: .6;
     margin-right: 8px;
     display: flex;
@@ -25,7 +25,7 @@
 
 /* style={{ display: "grid", gridTemplateColumns: "repeat(3, .25fr)" }} */
 
-.technologies span {
+.tags span {
     font-size: 14px;
 }
 
@@ -68,7 +68,7 @@
         font-size: 17px; /* was 20px */
     }
 
-    .technologies span {
+    .tags span {
         font-size: 12px; /* was 14px */
     }
 
@@ -81,7 +81,7 @@
         padding: 3px; /* was 4px */
     }
 
-    .technologies {
+    .tags {
         gap: 8px; /* was 10px */
     }
 }

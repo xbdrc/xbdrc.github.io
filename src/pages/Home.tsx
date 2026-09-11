@@ -159,20 +159,20 @@ export default function Home() {
                         <ProjectCard
                             title="Sentiment API"
                             image="./projects/sentimentapi.png"
-                            technologies={["Python", "FastAPI", "HuggingFace", "Docker"]}
+                            tags={["Python", "FastAPI", "HuggingFace", "Docker"]}
                             repo="https://github.com/xbdrc/sentiment-api"
                         />
                         <ProjectCard
                             title="ITJobs Analyzer"
                             image="./projects/itjobsanalyzer.png"
-                            technologies={["Python", "Streamlit"]}
+                            tags={["Python", "Streamlit"]}
                             repo="https://github.com/xbdrc/itjobs-analyzer"
                             live="https://itjobsviz.streamlit.app"
                         />
                         <ProjectCard
                             title="Portfolio"
                             image="./projects/portfolio2.png"
-                            technologies={["ReactJS", "CSS", "TypeScript", "Vite"]}
+                            tags={["ReactJS", "CSS", "TypeScript", "Vite"]}
                             repo="https://github.com/xbdrc/xbdrc.github.io"
                         />
                     </div>
