@@ -122,6 +122,7 @@ export default function Home() {
                         <IconCard title="TypeScript" image="./icons/ts.png" />
                         <IconCard title="HTML5" image="./icons/html5.png" />
                         <IconCard title="CSS3" image="./icons/css3.png" />
+                        <IconCard title="Java" image="./icons/java.png" />
                         <IconCard title="Postgres" image="./icons/postgres.png" />
                         <IconCard title="Python" image="./icons/python.png" />
                         <IconCard title="Git" image="./icons/git.png" />
@@ -174,6 +175,13 @@ export default function Home() {
                             image="./projects/portfolio2.png"
                             tags={["ReactJS", "CSS", "TypeScript", "Vite"]}
                             repo="https://github.com/xbdrc/xbdrc.github.io"
+                        />
+                        <ProjectCard
+                            title="MNIST"
+                            image="./projects/mnist.png"
+                            tags={["ReactJS", "CSS", "TensorFlow", "Vite"]}
+                            repo="https://github.com/xbdrc/mnist"
+                            live="https://xbdrc.github.io/mnist"
                         />
                     </div>
                 </Section>
