@@ -20,6 +20,35 @@ function App() {
   const playerRef = useRef<SoundCloudWidget | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  // NEW: loading state
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [ready, setReady] = useState(false);
+
+  // NEW: wait for window load, fonts and the background video
+  useEffect(() => {
+    const waitForWindow = new Promise<void>((resolve) => {
+      if (document.readyState === "complete") resolve();
+      else window.addEventListener("load", () => resolve(), { once: true });
+    });
+
+    const waitForFonts: Promise<unknown> = document.fonts?.ready ?? Promise.resolve();
+
+    const waitForVideo = new Promise<void>((resolve) => {
+      const video = videoRef.current;
+      if (!video || video.readyState >= 4) return resolve();
+      video.addEventListener("canplaythrough", () => resolve(), { once: true });
+      video.addEventListener("error", () => resolve(), { once: true });
+    });
+
+    // Safety net so visitors never get stuck on the loader
+    const timeout = new Promise<void>((resolve) => setTimeout(resolve, 8000));
+
+    Promise.race([
+      Promise.all([waitForWindow, waitForFonts, waitForVideo]),
+      timeout,
+    ]).then(() => setReady(true));
+  }, []);
+
   useEffect(() => {
     const container = document.querySelector(".container") as HTMLElement || null;
     if (!container) return;
@@ -60,8 +89,6 @@ function App() {
     };
   }, []);
 
-  // const [playerReady, setPlayerReady] = useState(false);
-
   useEffect(() => {
     const iframe = document.getElementById("soundcloud-player");
 
@@ -73,7 +100,6 @@ function App() {
 
     widget.bind(window.SC.Widget.Events.READY, () => {
       console.log("SoundCloud player ready");
-      // setPlayerReady(true);
     });
 
     widget.bind(window.SC.Widget.Events.PLAY, () => {
@@ -102,8 +128,25 @@ function App() {
   return (
     <Router>
       {showCursor && <AnimatedCursor color='255, 255, 255' />}
-      <div className='page-wrapper'>
-        <video className='bg-video' src='background_1_1.mp4' autoPlay muted loop />
+
+      {/* NEW: loading overlay */}
+      <div className={`preloader ${ready ? "preloader--hidden" : ""}`}>
+        <div className="spinner" />
+      </div>
+
+      {/* CHANGED: added ready class */}
+      <div className={`page-wrapper ${ready ? "ready" : ""}`}>
+        {/* CHANGED: ref, playsInline, preload */}
+        <video
+          ref={videoRef}
+          className='bg-video'
+          src='background_1_1.mp4'
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        />
         <div className='container'>
           <Routes>
             <Route path='/' element={<Home />} />
@@ -130,9 +173,7 @@ function App() {
         </div>
       </div>
     </Router>
-
   );
-
 }
 
 export default App;
