@@ -111,7 +111,7 @@ export default function Home() {
                 </Section>
                 <Section
                     name="Stack"
-                    description="Stack of technologies and tools I’ve worked with across web development, databases, APIs, and AI."
+                    description="Technologies and tools I’ve worked with across web development, databases, APIs, AI, and more."
                 >
                     <div className="stack">
                         <IconCard title="MongoDB" image="./icons/mongodb.png" />
