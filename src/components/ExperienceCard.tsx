@@ -18,7 +18,7 @@ interface ExperienceProps {
 // Component
 export default function ExperienceCard({ type, title, timerange, about }: ExperienceProps) {
     return (
-        <div className={styles.container}>
+        <div className={styles.container} title={title}>
             <div className={styles.experience}>
                 <span>{type == "schoolar" ? <IoIosSchool /> : <MdOutlineWork />}</span> <span>{title}</span> <span style={{ opacity: ".6" }}>{timerange}</span>
             </div>

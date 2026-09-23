@@ -20,7 +20,7 @@ interface CardProps {
 // Component
 export default function Card({ title, image, description }: CardProps) {
     return (
-        <div className={styles.container}>
+        <div className={styles.container} title={title}>
             <div className={styles.main}>
                 {image && <img className={styles.image} alt={title} src={image} />}
                 <h4 className={styles.title}>{title}</h4>

@@ -52,17 +52,16 @@ export default function Home() {
                         github="xbdrc"
                         linkedin="xbrunocruzx"
                         spotify="https://open.spotify.com/user/1192659842?si=98a1feeb38024d39"
-                        discord="https://discord.com/users/231768776490614784"
                         email="contact.brunocruz@gmail.com"
                     />
                     <div className="urls">
-                        <a onClick={() => scrollToSection("about")} href="#">about</a>
-                        <a onClick={() => scrollToSection("experience")} href="#">experience</a>
-                        <a onClick={() => scrollToSection("stack")} href="#">stack</a>
-                        <a onClick={() => scrollToSection("certificates")} href="#">certificates</a>
-                        <a onClick={() => scrollToSection("projects")} href="#">projects</a>
-                        <a onClick={() => scrollToSection("snippets")} href="#">snippets</a>
-                        <a target="_blank" href="https://xbdrc.github.io/brunocruz_resume.pdf"><FaLink size={14} />&nbsp;&nbsp;resume</a>
+                        <a onClick={() => scrollToSection("about")} href="#" title="about">about</a>
+                        <a onClick={() => scrollToSection("experience")} href="#" title="experience">experience</a>
+                        <a onClick={() => scrollToSection("stack")} href="#" title="stack">stack</a>
+                        <a onClick={() => scrollToSection("certificates")} href="#" title="certificates">certificates</a>
+                        <a onClick={() => scrollToSection("projects")} href="#" title="projects">projects</a>
+                        <a onClick={() => scrollToSection("snippets")} href="#" title="snippets">snippets</a>
+                        <a target="_blank" href="https://xbdrc.github.io/brunocruz_resume.pdf" title="resume"><FaLink size={14} />&nbsp;&nbsp;resume</a>
                     </div>
                     <SoundCloudPlayer playlist="https://api.soundcloud.com/playlists/2282476155" />
                 </Section>

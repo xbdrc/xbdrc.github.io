@@ -29,7 +29,7 @@ interface ProjectProps {
 export default function ProjectCard({ title, image, tags, repo, live, download }: ProjectProps) {
     
     return (
-        <div className={styles.container}>
+        <div className={styles.container} title={title}>
             <img alt={title} src={image} className={styles.image} />
             <div className={styles.info}>
                 <span className={styles.title}>{title}</span>
