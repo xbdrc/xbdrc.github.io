@@ -98,7 +98,7 @@ input[type="email"] {
   grid-row: auto auto;
 }
 
-.technologies {
+.stack {
   display: grid;
   grid-template-columns: repeat(4, 120px);
   justify-content: center; /* centers the whole set of cards in the row */
@@ -187,7 +187,7 @@ input[type="email"] {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .technologies {
+  .stack {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     min-width: 180px;
   }
@@ -205,7 +205,7 @@ input[type="email"] {
   .urls {
     font-size: 14px;
   }
-  .technologies {
+  .stack {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

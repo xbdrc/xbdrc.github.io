@@ -56,13 +56,13 @@ export default function Home() {
                         email="contact.brunocruz@gmail.com"
                     />
                     <div className="urls">
-                        <a onClick={() => scrollToSection("about")} href="#">About</a>
-                        <a onClick={() => scrollToSection("experience")} href="#">Experience</a>
-                        <a onClick={() => scrollToSection("technologies")} href="#">Technologies</a>
-                        <a onClick={() => scrollToSection("certificates")} href="#">Certificates</a>
-                        <a onClick={() => scrollToSection("projects")} href="#">Projects</a>
-                        <a onClick={() => scrollToSection("snippets")} href="#">Snippets</a>
-                        <a target="_blank" href="https://xbdrc.github.io/brunocruz_resume.pdf"><FaLink size={14} />&nbsp;&nbsp;Resume</a>
+                        <a onClick={() => scrollToSection("about")} href="#">about</a>
+                        <a onClick={() => scrollToSection("experience")} href="#">experience</a>
+                        <a onClick={() => scrollToSection("stack")} href="#">stack</a>
+                        <a onClick={() => scrollToSection("certificates")} href="#">certificates</a>
+                        <a onClick={() => scrollToSection("projects")} href="#">projects</a>
+                        <a onClick={() => scrollToSection("snippets")} href="#">snippets</a>
+                        <a target="_blank" href="https://xbdrc.github.io/brunocruz_resume.pdf"><FaLink size={14} />&nbsp;&nbsp;resume</a>
                     </div>
                     <SoundCloudPlayer playlist="https://api.soundcloud.com/playlists/2282476155" />
                 </Section>
@@ -110,10 +110,10 @@ export default function Home() {
                     />
                 </Section>
                 <Section
-                    name="Technologies"
-                    description="Group of technologies and tools I’ve worked with across web development, databases, APIs, and AI."
+                    name="Stack"
+                    description="Stack of technologies and tools I’ve worked with across web development, databases, APIs, and AI."
                 >
-                    <div className="technologies">
+                    <div className="stack">
                         <IconCard title="MongoDB" image="./icons/mongodb.png" />
                         <IconCard title="Express" image="./icons/express.webp" />
                         <IconCard title="ReactJS" image="./icons/reactjs.png" />
