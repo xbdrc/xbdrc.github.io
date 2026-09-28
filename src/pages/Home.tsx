@@ -7,7 +7,6 @@ import ExperienceCard from "../components/ExperienceCard";
 import IconCard from "../components/IconCard";
 import ProjectCard from '../components/ProjectCard';
 import CodeCard from "../components/CodeCard";
-import SoundCloudPlayer from "../components/SoundCloudPlayer";
 import QuoteCard from "../components/QuoteCard";
 import Section from '../components/Section'
 import SEO from "../components/SEO";
@@ -42,7 +41,7 @@ export default function Home() {
                 url="https://xbdrc.github.io/"
             />
             <div className="document" ref={docRef}>
-                <Section name="Home" showName={false}>
+                <Section name="Home" showName={false} style={{ height: "100vh", display: "flex", justifyContent: "center", padding: 0, gap: "12px" }}>
                     <QuoteCard quotes={quotes} effect="slide" font="Roboto" italic letterSpacing />
                     <DevCard
                         name="Bruno Cruz"
@@ -51,7 +50,7 @@ export default function Home() {
                         location="Lisbon, Portugal, Earth 🌍"
                         github="xbdrc"
                         linkedin="xbrunocruzx"
-                        spotify="https://open.spotify.com/user/1192659842?si=98a1feeb38024d39"
+                        // spotify="https://open.spotify.com/user/1192659842?si=98a1feeb38024d39"
                         email="contact.brunocruz@gmail.com"
                     />
                     <div className="urls">
@@ -63,7 +62,7 @@ export default function Home() {
                         <a onClick={() => scrollToSection("snippets")} href="#" title="snippets">snippets</a>
                         <a target="_blank" href="https://xbdrc.github.io/brunocruz_resume.pdf" title="resume"><FaLink size={14} />&nbsp;&nbsp;resume</a>
                     </div>
-                    <SoundCloudPlayer playlist="https://api.soundcloud.com/playlists/2282476155" />
+                    {/* <SoundCloudPlayerOriginal playlist="https://api.soundcloud.com/playlists/2282476155" /> */}
                 </Section>
                 <Section
                     name="About"

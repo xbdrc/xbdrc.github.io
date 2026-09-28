@@ -16,7 +16,7 @@ body {
 }
 
 body {
-    animation: fadeIn 1s ease forwards;
+  animation: fadeIn 1s ease forwards;
 }
 
 div {
@@ -101,7 +101,8 @@ input[type="email"] {
 .stack {
   display: grid;
   grid-template-columns: repeat(4, 120px);
-  justify-content: center; /* centers the whole set of cards in the row */
+  justify-content: center;
+  /* centers the whole set of cards in the row */
   gap: 20px;
   padding: 20px;
 }
@@ -145,7 +146,8 @@ input[type="email"] {
   text-align: center;
   font-weight: 200;
   width: 100%;
-  min-width: 180px; /* tune this - wider than .description's 480px since it's body text, not a subtitle */
+  min-width: 180px;
+  /* tune this - wider than .description's 480px since it's body text, not a subtitle */
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -205,6 +207,7 @@ input[type="email"] {
   .urls {
     font-size: 14px;
   }
+
   .stack {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -213,6 +216,7 @@ input[type="email"] {
 .hoverButtons {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 12px;
 
   position: fixed;
@@ -223,9 +227,12 @@ input[type="email"] {
   border-radius: 12px;
   z-index: 1;
 
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+  /* opacity: 0;
+  visibility: hidden; */
+  /* pointer-events: none; */
+  pointer-events: auto;
+
+  transition: opacity 0.4s ease;
 
   transition:
     opacity 0.3s ease,
@@ -237,20 +244,32 @@ input[type="email"] {
   -webkit-backdrop-filter: blur(6.2px);
 }
 
+.hoverButtons.idle {
+  opacity: 0.4;
+}
+
 .hoverButtons.visible {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
+.hoverButtons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 button svg {
   transition: all .4s ease;
 }
 
+.hoverButtons img,
 button:hover svg {
   transform: scale(1.4);
 }
 
+.hoverButtons img,
 button:active svg {
   transform: scale(1);
 }
@@ -304,6 +323,21 @@ button:active svg {
   }
 }
 
+/* ANIMATIONS */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px 0px #ffffff;
+  }
+
+  50% {
+    box-shadow: 0 0 20px 1px #ffffff;
+  }
+
+  100% {
+    box-shadow: 0 0 5px 0px #ffffff;
+  }
+}
+
 /* PRELOAD */
 .preloader {
   position: fixed;
@@ -311,9 +345,11 @@ button:active svg {
   z-index: 9999;
   display: grid;
   place-items: center;
-  background: #0b0b0f; /* match your site's dark background */
+  background: #0b0b0f;
+  /* match your site's dark background */
   transition: opacity 0.6s ease, visibility 0.6s;
 }
+
 .preloader--hidden {
   opacity: 0;
   visibility: hidden;
@@ -328,7 +364,12 @@ button:active svg {
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
-@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 /* fade the page in once ready */
 .page-wrapper .container,
@@ -336,6 +377,7 @@ button:active svg {
   opacity: 0;
   transition: opacity 0.6s ease;
 }
+
 .page-wrapper.ready .container,
 .page-wrapper.ready .bg-video {
   opacity: 1;

@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AnimatedCursor from "react-animated-cursor"
+import { MotionConfig } from "framer-motion";
 
 // CSS
 import './App.css';
@@ -11,20 +12,42 @@ import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import Contact from './pages/Contact';
 
+// Player
+import SoundCloudPlayer, {
+  type SoundCloudPlayerHandle,
+  type TrackInfo,
+  PLACEHOLDER_ARTWORK,
+} from './components/SoundCloudPlayer';
+
 // Icons
 import { FaPlay, FaPause, FaArrowUp } from "react-icons/fa";
+import { HiRectangleStack } from "react-icons/hi2";
+import { BiSolidRectangle } from "react-icons/bi";
+
+// Set this to your playlist's embed URL (same one you were passing before)
+const PLAYLIST_URL = "https://api.soundcloud.com/playlists/2282476155";
 
 function App() {
 
-  const [showCursor, setShowCursor] = useState(false)
-  const playerRef = useRef<SoundCloudWidget | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  // NEW: loading state
+  const playerRef = useRef<SoundCloudPlayerHandle>(null)
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [showCursor, setShowCursor] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTrack, setCurrentTrack] = useState<TrackInfo | null>(null);
+  const [artworkFailed, setArtworkFailed] = useState(false);
+  // Placeholder when: nothing loaded / a track is loading (null) / the image failed
+  const artworkSrc =
+    !currentTrack || artworkFailed ? PLACEHOLDER_ARTWORK : currentTrack.artworkUrl;
+  // Starts from the visitor's system preference; the tray button overrides it
+  const [isReducedMotion, setIsReducedMotion] = useState(
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
   const [ready, setReady] = useState(false);
+  const [showTop, setShowTop] = useState(false);
+  const [isIdle, setIsIdle] = useState(false);
+  const idleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // NEW: wait for window load, fonts and the background video
+  // Wait for window to load
   useEffect(() => {
     const waitForWindow = new Promise<void>((resolve) => {
       if (document.readyState === "complete") resolve();
@@ -49,6 +72,7 @@ function App() {
     ]).then(() => setReady(true));
   }, []);
 
+  // SCROLL BEHAVIOR
   useEffect(() => {
     const container = document.querySelector(".container") as HTMLElement || null;
     if (!container) return;
@@ -63,6 +87,7 @@ function App() {
     return () => window.removeEventListener("wheel", handleWheel);
   }, []);
 
+  // POINTER
   useEffect(() => {
     const mq = window.matchMedia("(pointer: fine)")
     setShowCursor(mq.matches)
@@ -71,8 +96,30 @@ function App() {
     return () => mq.removeEventListener("change", handler);
   }, [])
 
-  const [showTop, setShowTop] = useState(false);
+  // HOVER BUTTONS
+  // Fade the tray to 0.4 opacity after 5s of no interaction; any
+  // interaction (mouse, touch, scroll, keyboard) brings it back to full.
+  useEffect(() => {
+    const resetIdle = () => {
+      setIsIdle(false);
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+      idleTimerRef.current = setTimeout(() => setIsIdle(true), 5000);
+    };
 
+    const events: (keyof WindowEventMap)[] = [
+      'mousemove', 'mousedown', 'touchstart', 'touchmove', 'wheel', 'scroll', 'keydown',
+    ];
+    events.forEach((e) => window.addEventListener(e, resetIdle, { passive: true }));
+
+    resetIdle(); // start the 5s countdown on mount
+
+    return () => {
+      events.forEach((e) => window.removeEventListener(e, resetIdle));
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    };
+  }, []);
+
+  // SCROLL
   useEffect(() => {
     const container = document.querySelector(".container");
 
@@ -89,90 +136,107 @@ function App() {
     };
   }, []);
 
+  // MUSIC ARTWORK LOADING
+  // New track (or new artwork URL) → try loading the image again
   useEffect(() => {
-    const iframe = document.getElementById("soundcloud-player");
-
-    if (!iframe || !window.SC) return;
-
-    const widget = window.SC.Widget(iframe);
-
-    playerRef.current = widget;
-
-    widget.bind(window.SC.Widget.Events.READY, () => {
-      console.log("SoundCloud player ready");
-    });
-
-    widget.bind(window.SC.Widget.Events.PLAY, () => {
-      setIsPlaying(true);
-    });
-
-    widget.bind(window.SC.Widget.Events.PAUSE, () => {
-      setIsPlaying(false);
-    });
-
-    widget.bind(window.SC.Widget.Events.FINISH, () => {
-      setIsPlaying(false);
-    });
-
-    return () => {
-      playerRef.current = null;
-    };
-  }, []);
+    setArtworkFailed(false);
+  }, [currentTrack?.artworkUrl]);
 
   const togglePlay = () => {
-    if (!playerRef.current) return;
-
-    playerRef.current.toggle();
+    playerRef.current?.toggle();
   };
 
+  const toggleReducedMotion = () => {
+    setIsReducedMotion((prev) => !prev)
+  }
+
   return (
-    <Router>
-      {showCursor && <AnimatedCursor color='255, 255, 255' />}
-
-      {/* NEW: loading overlay */}
-      <div className={`preloader ${ready ? "preloader--hidden" : ""}`}>
-        <div className="spinner" />
-      </div>
-
-      {/* CHANGED: added ready class */}
-      <div className={`page-wrapper ${ready ? "ready" : ""}`}>
-        {/* CHANGED: ref, playsInline, preload */}
-        <video
-          ref={videoRef}
-          className='bg-video'
-          src='background_1_1.mp4'
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        />
-        <div className='container'>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/contact' element={<Contact />} />
-            <Route path='*' element={<NotFound />} />
-          </Routes>
+    <MotionConfig reducedMotion={isReducedMotion ? "always" : "never"}>
+      <Router>
+        {showCursor && <AnimatedCursor color='255, 255, 255' />}
+        <div className={`preloader ${ready ? "preloader--hidden" : ""}`}>
+          <div className="spinner" />
         </div>
-        <div className={`hoverButtons ${showTop ? "visible" : ""}`}>
-          <button title={ isPlaying ? "Pause" : "Play" } onClick={togglePlay}>
-            {isPlaying ? <FaPause /> : <FaPlay />}
-          </button>
+        <div className={`page-wrapper ${ready ? "ready" : ""}`}>
+          <video
+            ref={videoRef}
+            className='bg-video'
+            src='background_1_1.mp4'
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          />
 
-          <button
-            title="Top"
-            onClick={() => {
-              document.querySelector(".container")?.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              });
-            }}
-          >
-            <FaArrowUp />
-          </button>
+          {/* Invisible, fully controlled by the tray button below */}
+          <SoundCloudPlayer
+            ref={playerRef}
+            playlist={PLAYLIST_URL}
+            onPlayStateChange={setIsPlaying}
+            onTrackChange={setCurrentTrack}
+          />
+
+          <div className='container'>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/contact' element={<Contact />} />
+              <Route path='*' element={<NotFound />} />
+            </Routes>
+          </div>
+          <div className={`hoverButtons ${isIdle ? "idle" : ""}`}>
+            <a
+              href="https://soundcloud.com/pages/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="SoundCloud"
+            >
+              <img src="soundcloud.webp" alt="SoundCloud" width={32} />
+            </a>
+
+            {/* Always rendered; shows the placeholder while loading or on error */}
+            <a
+              href={currentTrack?.permalinkUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={currentTrack?.title || "Loading..."}
+              className="nowPlaying"
+            >
+              <img
+                src={artworkSrc}
+                alt={currentTrack?.title || "Now playing"}
+                width={32}
+                onError={() => setArtworkFailed(true)}
+              />
+            </a>
+
+            <button title={isPlaying ? "Pause" : "Play"} onClick={togglePlay}>
+              {isPlaying ? <FaPause /> : <FaPlay />}
+            </button>
+
+            <button
+              title={isReducedMotion ? "Enable Motion" : "Disable Motion"}
+              onClick={toggleReducedMotion}
+            >
+              {isReducedMotion ? <HiRectangleStack /> : <BiSolidRectangle />}
+            </button>
+
+            <button
+              title="Top"
+              onClick={() => {
+                document.querySelector(".container")?.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
+              }}
+            >
+              <FaArrowUp />
+            </button>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </MotionConfig>
+
   );
 }
 
