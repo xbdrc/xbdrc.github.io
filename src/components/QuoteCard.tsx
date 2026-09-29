@@ -1,3 +1,6 @@
+// Modules
+import { useState, useMemo } from 'react'
+
 // CSS
 import styles from './QuoteCard.module.css'
 
@@ -14,7 +17,11 @@ interface QuoteProps {
 }
 
 // Component
-export default function QuoteCard({ quotes=["Hello, World! 🌍"], effect = "static", font, italic, bold, letterSpacing }: QuoteProps) {
+export default function QuoteCard({ quotes = ["Hello, World! 🌍"], effect = "static", font, italic, bold, letterSpacing }: QuoteProps) {
+
+    const [quote] = useState(
+        () => quotes[Math.floor(Math.random() * quotes.length)]
+    );
 
     const textStyle: React.CSSProperties = {
         fontFamily: "'" + font + "', serif",
@@ -26,11 +33,11 @@ export default function QuoteCard({ quotes=["Hello, World! 🌍"], effect = "sta
     }
 
     return (
-        <text
+        <p
             className={`${styles.base} ${styles[effect + "Animation"]}`}
             style={textStyle}>
-            "{quotes[Math.floor(Math.random() * quotes.length)]}"
-        </text>
+            "{quote}"
+        </p>
     )
-    
+
 }
