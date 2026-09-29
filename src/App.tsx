@@ -43,7 +43,7 @@ function App() {
     () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
   const [ready, setReady] = useState(false);
-  const [_showTop, setShowTop] = useState(false);
+  const [showTop, setShowTop] = useState(false);
   const [isIdle, setIsIdle] = useState(false);
   const idleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -223,6 +223,7 @@ function App() {
 
             <button
               title="Top"
+              disabled={!showTop}
               onClick={() => {
                 document.querySelector(".container")?.scrollTo({
                   top: 0,

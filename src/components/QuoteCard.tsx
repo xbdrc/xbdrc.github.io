@@ -1,5 +1,5 @@
 // Modules
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 
 // CSS
 import styles from './QuoteCard.module.css'
