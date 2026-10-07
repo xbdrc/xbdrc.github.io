@@ -147,17 +147,29 @@ function App() {
   };
 
   const toggleReducedMotion = () => {
-    setIsReducedMotion((prev) => !prev)
+
+    setIsReducedMotion(!isReducedMotion)
   }
 
   return (
     <MotionConfig reducedMotion={isReducedMotion ? "always" : "never"}>
       <Router>
-        {showCursor && <AnimatedCursor color='255, 255, 255' />}
+        {(showCursor && !isReducedMotion) && <AnimatedCursor color='255, 255, 255' />}
         <div className={`preloader ${ready ? "preloader--hidden" : ""}`}>
           <div className="spinner" />
         </div>
-        <div className={`page-wrapper ${ready ? "ready" : ""}`}>
+        <div className={`page-wrapper ${ready ? "ready" : ""}`}
+          style={{
+            cursor: showCursor && !isReducedMotion ? "none" : "auto",
+            ...(isReducedMotion
+              ? {
+                backgroundImage: `url('${import.meta.env.BASE_URL}background_static.png')`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }
+              : {})
+          }}>
           <video
             ref={videoRef}
             className='bg-video'
@@ -167,6 +179,7 @@ function App() {
             loop
             playsInline
             preload="auto"
+            style={isReducedMotion ? { visibility: "hidden" } : {}}
           />
 
           {/* Invisible, fully controlled by the tray button below */}
@@ -227,7 +240,7 @@ function App() {
               onClick={() => {
                 document.querySelector(".container")?.scrollTo({
                   top: 0,
-                  behavior: "smooth",
+                  behavior: isReducedMotion ? "instant" : "smooth",
                 });
               }}
             >

@@ -13,6 +13,7 @@ body {
   font-family: "Roboto", sans-serif;
   overflow: hidden;
   scroll-behavior: smooth;
+  cursor: none;
 }
 
 body {

@@ -1,5 +1,6 @@
 // Modules
 import { useRef } from "react";
+import { useReducedMotion } from 'framer-motion'
 
 // Components
 import DevCard from "../components/DevCard";
@@ -16,6 +17,17 @@ import { FaLink } from "react-icons/fa";
 
 export default function Home() {
 
+    const shouldReduceMotion = useReducedMotion();
+    const sectionVariants = shouldReduceMotion
+        ? {
+            hidden: { opacity: 1 },
+            visible: { opacity: 1 },
+        }
+        : {
+            hidden: { opacity: 0, transition: { duration: 0.3, ease: "easeIn" } },
+            visible: { opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
+        };
+
     const docRef = useRef<HTMLDivElement>(null);
 
     const quotes = [
@@ -27,7 +39,7 @@ export default function Home() {
     const scrollToSection = (id: string) => {
         const el = document.getElementById(id);
         if (el) {
-            el.scrollIntoView({ behavior: "smooth" });
+            el.scrollIntoView({ behavior: shouldReduceMotion ? "instant" : "smooth" });
         }
     };
 
@@ -41,7 +53,7 @@ export default function Home() {
                 url="https://xbdrc.github.io/"
             />
             <div className="document" ref={docRef}>
-                <Section name="Home" showName={false} style={{ height: "100vh", display: "flex", justifyContent: "center", padding: 0, gap: "12px" }}>
+                <Section name="Home" showName={false} style={{ height: "100vh", display: "flex", justifyContent: "center", padding: 0, gap: "12px" }} variants={sectionVariants}>
                     <QuoteCard quotes={quotes} effect="slide" font="Roboto" italic letterSpacing />
                     <DevCard
                         name="Bruno Cruz"
@@ -67,6 +79,7 @@ export default function Home() {
                 <Section
                     name="About"
                     description=""
+                    variants={sectionVariants}
                 >
                     <p className="aboutDescription">
                         Full-Stack Developer with experience building and maintaining web applications, APIs, and database-driven solutions. Strong foundation in web development using <b>HTML</b>, <b>CSS</b>, <b>React</b>, and <b>Node.js</b>, with experience in <b>Python</b>, <b>SQL</b>, and <b>Git</b>. Familiar with <b>Docker</b> and <b>AI</b>. Motivated and solution-oriented, with a focus on building reliable software and contributing to challenging projects.
@@ -75,6 +88,7 @@ export default function Home() {
                 <Section
                     name="Experience"
                     description="Points-of-interest of my professional career."
+                    variants={sectionVariants}
                 >
                     <ExperienceCard
                         type="schoolar"
@@ -110,6 +124,7 @@ export default function Home() {
                 <Section
                     name="Stack"
                     description="Technologies and tools I’ve worked with across web development, databases, APIs, AI, and more."
+                    variants={sectionVariants}
                 >
                     <div className="stack">
                         <IconCard title="MongoDB" image="./icons/mongodb.png" />
@@ -136,6 +151,7 @@ export default function Home() {
                 <Section
                     name="Certificates"
                     description="Certifications taken along the way to improve skill-set."
+                    variants={sectionVariants}
                 >
                     <ExperienceCard
                         type="schoolar"
@@ -153,6 +169,7 @@ export default function Home() {
                 <Section
                     name="Projects"
                     description="A collection of projects I’ve built while learning and experimenting."
+                    variants={sectionVariants}
                 >
                     <div className="projects">
                         <ProjectCard
@@ -186,6 +203,7 @@ export default function Home() {
                 <Section
                     name="Snippets"
                     description="A collection of reusable code examples, SQL queries, and practical command references."
+                    variants={sectionVariants}
                 >
                     <CodeCard title='Postgres PSQL Shell Commands Sheet 🐘' file="./snippets/psql.txt" />
                     <CodeCard title='Git Commands Sheet 💾' file="./snippets/git.txt" />
