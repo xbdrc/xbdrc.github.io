@@ -21,8 +21,6 @@ import SoundCloudPlayer, {
 
 // Icons
 import { FaPlay, FaPause, FaArrowUp } from "react-icons/fa";
-import { HiRectangleStack } from "react-icons/hi2";
-import { BiSolidRectangle } from "react-icons/bi";
 
 // Set this to your playlist's embed URL (same one you were passing before)
 const PLAYLIST_URL = "https://api.soundcloud.com/playlists/2282476155";
@@ -39,9 +37,9 @@ function App() {
   const artworkSrc =
     !currentTrack || artworkFailed ? PLACEHOLDER_ARTWORK : currentTrack.artworkUrl;
   // Starts from the visitor's system preference; the tray button overrides it
-  const [isReducedMotion, setIsReducedMotion] = useState(
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  );
+  // const [isReducedMotion, setIsReducedMotion] = useState(
+  //   () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  // );
   const [ready, setReady] = useState(false);
   const [showTop, setShowTop] = useState(false);
   const [isIdle, setIsIdle] = useState(false);
@@ -146,30 +144,14 @@ function App() {
     playerRef.current?.toggle();
   };
 
-  const toggleReducedMotion = () => {
-
-    setIsReducedMotion(!isReducedMotion)
-  }
-
   return (
-    <MotionConfig reducedMotion={isReducedMotion ? "always" : "never"}>
+    <MotionConfig>
       <Router>
-        {(showCursor && !isReducedMotion) && <AnimatedCursor color='255, 255, 255' />}
+        { showCursor ?? <AnimatedCursor color='255, 255, 255' /> }
         <div className={`preloader ${ready ? "preloader--hidden" : ""}`}>
           <div className="spinner" />
         </div>
-        <div className={`page-wrapper ${ready ? "ready" : ""}`}
-          style={{
-            cursor: showCursor && !isReducedMotion ? "none" : "auto",
-            ...(isReducedMotion
-              ? {
-                backgroundImage: `url('${import.meta.env.BASE_URL}background_static.png')`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-              }
-              : {})
-          }}>
+        <div className={`page-wrapper ${ready ? "ready" : ""}`}>
           <video
             ref={videoRef}
             className='bg-video'
@@ -179,7 +161,6 @@ function App() {
             loop
             playsInline
             preload="auto"
-            style={isReducedMotion ? { visibility: "hidden" } : {}}
           />
 
           {/* Invisible, fully controlled by the tray button below */}
@@ -240,7 +221,6 @@ function App() {
               onClick={() => {
                 document.querySelector(".container")?.scrollTo({
                   top: 0,
-                  behavior: isReducedMotion ? "instant" : "smooth",
                 });
               }}
             >
