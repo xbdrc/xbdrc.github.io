@@ -82,7 +82,7 @@ export default function Home() {
                     variants={sectionVariants}
                 >
                     <p className="aboutDescription">
-                        Full-Stack Developer with experience building and maintaining web applications, APIs, and database-driven solutions. Strong foundation in web development using <b>HTML</b>, <b>CSS</b>, <b>React</b>, and <b>Node.js</b>, with experience in <b>Python</b>, <b>SQL</b>, and <b>Git</b>. Familiar with <b>Docker</b> and <b>AI</b>. Motivated and solution-oriented, with a focus on building reliable software and contributing to challenging projects.
+                        Full-Stack Developer with experience building and maintaining web applications, APIs, and database-driven solutions. Strong foundation in web development using <b>HTML</b>, <b>CSS</b>, <b>JS</b>, <b>React</b>, and <b>Node.js</b>, with experience in <b>Python</b>, <b>SQL</b>, and <b>Git</b>. Familiar with <b>Docker</b> and <b>AI</b>. Motivated and solution-oriented, with a focus on building reliable software and contributing to challenging projects.
                     </p>
                 </Section>
                 <Section
@@ -145,7 +145,6 @@ export default function Home() {
                         <IconCard title="Postman" image="./icons/postman.png" />
                         <IconCard title="VS Code" image="./icons/vscode.png" />
                         <IconCard title="Claude" image="./icons/claude.png" />
-                        <IconCard title="GitHub Copilot" image="./icons/ghcopilot.png" />
                     </div>
                 </Section>
                 <Section
@@ -211,9 +210,6 @@ export default function Home() {
                     <CodeCard title='NodeJS Simple Server 🌐' file="./snippets/index.js" />
                     <CodeCard title='CodeCard Component for ReactJS ⚛️' file="./snippets/codeCard.tsx" />
                 </Section>
-                <footer style={{ textAlign: "center" }}>
-                    Thanks for visiting 😊
-                </footer>
             </div>
         </>
 

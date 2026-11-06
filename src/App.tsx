@@ -227,12 +227,12 @@ function App() {
               {isPlaying ? <FaPause /> : <FaPlay />}
             </button>
 
-            <button
+            {/* <button
               title={isReducedMotion ? "Enable Motion" : "Disable Motion"}
               onClick={toggleReducedMotion}
             >
               {isReducedMotion ? <HiRectangleStack /> : <BiSolidRectangle />}
-            </button>
+            </button> */}
 
             <button
               title="Top"
