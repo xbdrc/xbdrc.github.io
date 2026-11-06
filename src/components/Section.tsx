@@ -29,7 +29,6 @@ const defaultVariants = {
 // Default viewport — once: false para animar em ambas direções do scroll
 const defaultViewport = {
     once: false,
-    amount: "some" as const
 }
 
 // Component

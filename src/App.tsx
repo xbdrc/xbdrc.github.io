@@ -29,7 +29,7 @@ function App() {
 
   const playerRef = useRef<SoundCloudPlayerHandle>(null)
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [showCursor, setShowCursor] = useState(false)
+  const [showCursor, setShowCursor] = useState(true)
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState<TrackInfo | null>(null);
   const [artworkFailed, setArtworkFailed] = useState(false);
