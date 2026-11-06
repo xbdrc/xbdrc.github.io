@@ -147,7 +147,7 @@ function App() {
   return (
     <MotionConfig>
       <Router>
-        { showCursor ?? <AnimatedCursor color='255, 255, 255' /> }
+        { showCursor && <AnimatedCursor color='255, 255, 255' /> }
         <div className={`preloader ${ready ? "preloader--hidden" : ""}`}>
           <div className="spinner" />
         </div>
