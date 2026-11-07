@@ -62,7 +62,6 @@ export default function Home() {
                         location="Lisbon, Portugal, Earth 🌍"
                         github="xbdrc"
                         linkedin="xbrunocruzx"
-                        // spotify="https://open.spotify.com/user/1192659842?si=98a1feeb38024d39"
                         email="contact.brunocruz@gmail.com"
                     />
                     <div className="urls">
@@ -87,7 +86,7 @@ export default function Home() {
                 </Section>
                 <Section
                     name="Experience"
-                    description="Points-of-interest of my professional career."
+                    description="Points-of-interest of professional career."
                     variants={sectionVariants}
                 >
                     <ExperienceCard
@@ -123,7 +122,7 @@ export default function Home() {
                 </Section>
                 <Section
                     name="Stack"
-                    description="Technologies and tools I’ve worked with across web development, databases, APIs, AI, and more."
+                    description="Technologies and tools used across web development, databases, APIs, AI, and more."
                     variants={sectionVariants}
                 >
                     <div className="stack">
@@ -167,7 +166,7 @@ export default function Home() {
                 </Section>
                 <Section
                     name="Projects"
-                    description="A collection of projects I’ve built while learning and experimenting."
+                    description="A collection of projects built while learning and experimenting."
                     variants={sectionVariants}
                 >
                     <div className="projects">
