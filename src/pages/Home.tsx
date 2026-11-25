@@ -144,6 +144,7 @@ export default function Home() {
                         <IconCard title="Postman" image="./icons/postman.png" />
                         <IconCard title="VS Code" image="./icons/vscode.png" />
                         <IconCard title="Claude" image="./icons/claude.png" />
+                        {/* <IconCard title="Rust" image="./icons/rust.png" /> */}
                     </div>
                 </Section>
                 <Section
@@ -196,6 +197,19 @@ export default function Home() {
                             repo="https://github.com/xbdrc/mnist"
                             live="https://xbdrc.github.io/mnist"
                         />
+                        <ProjectCard
+                            title="Mobie"
+                            image="./projects/mobie.png"
+                            tags={["ReactJS", "SCSS", "API"]}
+                            repo="https://github.com/xbdrc/mobie"
+                            live="https://xbdrc.github.io/mobie"
+                        />
+                        {/* <ProjectCard
+                            title="Rust Rate Limiter"
+                            image="./projects/rust_ratelimiter.png"
+                            tags={["Rust", "HTTP", "API"]}
+                            repo="https://github.com/xbdrc/rust_ratelimiter"
+                        /> */}
                     </div>
                 </Section>
                 <Section

@@ -221,6 +221,7 @@ function App() {
               onClick={() => {
                 document.querySelector(".container")?.scrollTo({
                   top: 0,
+                  behavior: "smooth",
                 });
               }}
             >
