@@ -23,7 +23,8 @@ import SoundCloudPlayer, {
 import { FaPlay, FaPause, FaArrowUp } from "react-icons/fa";
 
 // Set this to your playlist's embed URL (same one you were passing before)
-const PLAYLIST_URL = "https://api.soundcloud.com/playlists/2282476155";
+// const PLAYLIST_URL = "https://api.soundcloud.com/playlists/2282476155";
+const PLAYLIST_URL = "https://api.soundcloud.com/playlists/2335295883"
 
 function App() {
 

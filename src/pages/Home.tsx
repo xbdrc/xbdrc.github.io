@@ -134,7 +134,8 @@ export default function Home() {
                         <IconCard title="TypeScript" image="./icons/ts.png" />
                         <IconCard title="HTML5" image="./icons/html5.png" />
                         <IconCard title="CSS3" image="./icons/css3.png" />
-                        <IconCard title="Java" image="./icons/java.png" />
+                        <IconCard title="SASS" image="./icons/sass.png" />
+                        {/* <IconCard title="Java" image="./icons/java.png" /> */}
                         <IconCard title="Postgres" image="./icons/postgres.png" />
                         <IconCard title="Python" image="./icons/python.png" />
                         <IconCard title="Git" image="./icons/git.png" />
